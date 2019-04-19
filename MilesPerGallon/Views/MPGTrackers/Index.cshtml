@@ -1,0 +1,94 @@
+﻿@model IEnumerable<MilesPerGallon.Models.MPGTracker>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+<p>
+    Find: @Html.TextBox("SearchString")
+    <input type="submit" value="Search"/>
+
+    Start Date: @Html.TextBox("StartDate")
+    End Date: @Html.TextBox("EndDate")
+    <input type="submit" value="Search"/>
+</p>
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarModel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilesDriven)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GallonsFilled)
+        </th>
+        <th>
+            @Html.ActionLink("Fill Up Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("End Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilesPerGallon)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarModel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilesDriven)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GallonsFilled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FillUpDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateUseOfCar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDateUseOfCar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilesPerGallon)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+
+</table>
